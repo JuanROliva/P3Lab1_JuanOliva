@@ -29,7 +29,8 @@ int main(){
 			cin >> ladoB;
 			cout << "Ingrese la Hipotenusa - > ";
 			cin >> hipotenusa;
-			validacionDatos = ( hipotenusa >= 4 & hipotenusa <= 16 ) & ( ladoB >= 4 & ladoB <= 16 ) & (hipotenusa > ladoB);
+			valorCuadrado = (hipotenusa*hipotenusa) - (ladoB*ladoB);
+			validacionDatos = ( hipotenusa >= 4 & hipotenusa < 16 ) & ( ladoB >= 4 & ladoB < 16 ) & (hipotenusa > ladoB);
 			
 			
 			
@@ -42,8 +43,8 @@ int main(){
 			cin >> ladoA;
 			cout << "Ingrese la Hipotenusa - > ";
 			cin >> hipotenusa;
-			valorCuadrado = (ladoA*ladoA) - (hipotenusa*hipotenusa);
-			validacionDatos = ( hipotenusa >= 4 & hipotenusa <= 16 ) & ( ladoA >= 4 & ladoA <= 16 ) & (hipotenusa > ladoA);
+			valorCuadrado = (hipotenusa*hipotenusa) - (ladoA*ladoA);
+			validacionDatos = ( hipotenusa >= 4 & hipotenusa < 16 ) & ( ladoA >= 4 & ladoA < 16 ) & (hipotenusa > ladoA);
 		}
 		
 		// opcion 3
@@ -53,34 +54,32 @@ int main(){
 			cin >> ladoA;
 			cout << "Ingrese el lado B - > ";
 			cin >> ladoB;
-			validacionDatos = ( ladoA >= 4 & ladoA <= 16 ) & ( ladoB >= 4 & ladoB <= 16 );
+			valorCuadrado = (ladoA*ladoA) + (ladoB*ladoB);
+			validacionDatos = ( ladoA >= 4 & ladoA < 16 ) & ( ladoB >= 4 & ladoB < 16 ) & (ladoA != ladoB);
 		}
 		
 		
 		if(validacionDatos){
 			
+		
+			bool verificacionRaizExacta = false;
+			int valor = 0;
+			for (int i = 0; i < valorCuadrado ; i++){
+				int cuadrado = i*i;
+				if(cuadrado == valorCuadrado){
+					verificacionRaizExacta = true;
+					valor = i;
+					break;
+				}
+			}
+			if(verificacionRaizExacta){
+				cout << "respuesta = " << valor << endl;
+			}else{
+				cout << "El numero no tiene una raiz exacta" << endl;
+			}
 		}else{
 			cout << "Los valores ingresados no son correctos"  << endl;
 		}
-		
-		
-	
-		
-		
-		/*
-		int contador = 0;
-		for (int i = 2 ; i > valorCuadrado ; i++){
-			int contadorInterno = 0;
-			for(int j = 1; j>i ; i++ ){
-				if(i % j == 0)
-					contadorInterno++;	
-			}
-			if (contadorInterno <= 1){
-				
-			}
-		}
-		*/
-		
 		
 		//Ciclo repetitivo
 		cout << "Desea continuar? S/N  -- > ";
